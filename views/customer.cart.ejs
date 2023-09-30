@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <!-- Include Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+
+        .navbar-custom {
+            background: linear-gradient(to left, #85e6ff, #008aff);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar-custom .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-custom .navbar-nav .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .navbar-custom .btn-signin {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .navbar-custom .btn-signin:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+
+           
+    </style>
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <!-- Left Side: Website Name -->
+            <a class="navbar-brand" href="/customer/home">Quick Basket</a>
+            
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+    
+        
+                  <li class="nav-item dropdown">
+        
+                    <% if(customerName){ %>
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" style="margin-right: 10px; margin-left: 30px;">
+                        <%= customerName %>
+                      </a>
+                      <% }else{ %>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" >
+                          not user
+                        </a>
+                        <% } %>
+        
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                            <li><a class="dropdown-item" href="/customer/orders">Orders</a></li>
+                            <li><a class="dropdown-item" href="/api/bank/login">Bank</a></li>
+                            <li><a class="dropdown-item" href="/customer/edit-profile">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Help</a></li>
+                            <li><a class="dropdown-item" href="#">About</a></li>
+                            <li>
+                              <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="/" onclick="confirmLogout()">Logout</a>
+                            </li>
+                          </ul>
+                  </li>
+                </ul>
+              </div>
+        </div>
+    </nav>
+
+
+    <div class="container mt-5">
+        <h1>Your Cart</h1>
+        <ul class="list-group mt-4" id="cart-list">
+            <% cartData.forEach(item => { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img src="/<%= item.product.product_image.replace(/\\/g, '/') %>" alt="<%= item.product.name %>" class="img-thumbnail" style="max-width: 150px;">
+                        <div class="ml-3" style="margin-left: 50px;">
+                            <h5><%= item.product.name %></h5>
+                            <p>Price: Tk. <%= item.product.price %></p>
+                            <p>Quantity: <span class="quantity"><%= item.quantity %></span></p>
+                            <p>Total: Tk. <span class="item-total" data-price="<%= item.product.price %>"><%= item.product.price * item.quantity %></span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary btn-sm mr-2" data-action="decrease" data-item-id="<%= item.product._id %>">-</button>
+                        <button class="btn btn-secondary btn-sm mr-2" data-action="increase" data-item-id="<%= item.product._id %>">+</button>
+                        <button class="btn btn-danger btn-sm" data-action="remove" data-item-id="<%= item.product._id %>">Remove</button>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+        <div class="mt-4">
+            <h4>Total Price: Tk. <span id="total-price"><!-- Calculate total price using JavaScript --></span></h4>
+            <!-- <a href="/api/bank/payment" class="btn btn-primary">Proceed to Checkout</a> -->
+
+
+            <form action="/api/bank/payment" method="post">
+                <!-- Add a hidden input field for each cart item -->
+                <% cartData.forEach(item => { %>
+                    <input type="hidden" name="cartItem" value="<%= JSON.stringify(item) %>">
+                <% }); %>
+                <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
+            </form>
+        </div>
+    </div>
+    <!-- Include Bootstrap 5 JS and Popper.js (required for Bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript to update quantity and total price
+        const cartItems = document.querySelectorAll('#cart-list .list-group-item');
+        const totalPriceElement = document.getElementById('total-price');
+
+        function updateItem(item, quantity) {
+            const itemTotalElement = item.querySelector('.item-total');
+            const price = parseFloat(itemTotalElement.getAttribute('data-price'));
+            itemTotalElement.innerText = (price * quantity).toFixed(2);
+        }
+
+        function updateTotalPrice() {
+            const itemTotals = document.querySelectorAll('.item-total');
+            let total = 0;
+            itemTotals.forEach(itemTotal => {
+                total += parseFloat(itemTotal.innerText);
+            });
+            totalPriceElement.innerText = total.toFixed(2);
+        }
+
+        cartItems.forEach(item => {
+            const decreaseButton = item.querySelector('[data-action="decrease"]');
+            const increaseButton = item.querySelector('[data-action="increase"]');
+            const removeButton = item.querySelector('[data-action="remove"]');
+            const quantityElement = item.querySelector('.quantity');
+
+            decreaseButton.addEventListener('click', () => {
+                let quantity = parseInt(quantityElement.innerText);
+                if (quantity > 1) {
+                    quantity--;
+                    quantityElement.innerText = quantity;
+                    updateItem(item, quantity);
+                    updateTotalPrice();
+                }
+            });
+
+            increaseButton.addEventListener('click', () => {
+                let quantity = parseInt(quantityElement.innerText);
+                quantity++;
+                quantityElement.innerText = quantity;
+                updateItem(item, quantity);
+                updateTotalPrice();
+            });
+
+            removeButton.addEventListener('click', () => {
+                item.remove();
+                updateTotalPrice();
+            });
+        });
+
+        // Initial total price calculation
+        updateTotalPrice();
+    </script>
+</body>
+</html>

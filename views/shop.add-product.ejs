@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+        .navbar-custom {
+                    background: linear-gradient(to left, #85e6ff, #008aff);
+                }
+        
+                .navbar-brand {
+                    font-weight: bold;
+                    color: white;
+                }
+        
+                .navbar-custom .navbar-nav .nav-link {
+                    color: #fff !important;
+                }
+        
+                .navbar-custom .navbar-nav .nav-link:hover {
+                    opacity: 0.8;
+                }
+        
+                .navbar-custom .btn-signin {
+                    background-color: transparent;
+                    border: 1px solid #fff;
+                    color: #fff;
+                }
+        
+                .navbar-custom .btn-signin:hover {
+                    background-color: #fff;
+                    color: #000;
+                }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <!-- Left Side: Website Name -->
+        <a class="navbar-brand" href="/api/shop/home">Quick Basket</a>
+        
+
+       
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/shop/add-category">Add Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/shop/change-offer">Change Offer</a>
+                </li>
+                
+              <li class="nav-item dropdown">
+    
+                <% if(shop.name){ %>
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="margin-right: 10px; margin-left: 30px;">
+                    <%=shop.name %>
+                  </a>
+                  <% }else{ %>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false" >
+                      not user
+                    </a>
+                    <% } %>
+    
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                        <li><a class="dropdown-item" href="/api/shop/orders">Orders</a></li>
+                        <li><a class="dropdown-item" href="/api/bank/login">Bank</a></li>
+                        <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Help</a></li>
+                        <li><a class="dropdown-item" href="#">About</a></li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="/" onclick="confirmLogout()">Logout</a>
+                        </li>
+                      </ul>
+              </li>
+            </ul>
+          </div>
+    </div>
+</nav>
+
+<!-- Product Form -->
+<div class="container mt-4">
+    <h2>Add Product</h2>
+    <form action="/api/shop/add-product" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="productName" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="productPrice" class="form-label">Price</label>
+            <input type="number" class="form-control" id="productPrice" name="price" required>
+        </div>
+        <div class="mb-3">
+            <label for="productImage" class="form-label">Product Image</label>
+            <input type="file" class="form-control-file" id="productImage" name="product_image" accept="image/*" required>
+           
+        </div>
+        <div class="mb-3">
+            <label for="productDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="productDescription" name="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="productStock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="productStock" name="stock" required>
+        </div>
+        <div class="mb-3">
+            <label for="productCategory" class="form-label">Category</label>
+            <select class="form-select" id="productCategory" name="category" required>
+                <option value="" disabled selected>Select a category</option>
+                <% catagories.forEach((category) => { %>
+                    <option value="<%= category._id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="productDiscount" class="form-label">Discount</label>
+            <input type="number" class="form-control" id="productDiscount" name="discount" required>
+            
+        </div>
+        <div class="mb-3">
+            <label for="productDiscountType" class="form-label">Discount Type</label>
+            <select class="form-select" id="productDiscountType" name="discount_type" required>
+                <option value="amount">Amount</option>
+                <option value="percentage">Percentage</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+</div>
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

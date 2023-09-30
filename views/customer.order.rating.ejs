@@ -1,0 +1,104 @@
+<!-- views/customer.order.rating.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Your Order</title>
+    <!-- Include Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Add custom styles here if needed */
+        .rating {
+            display: inline-block;
+        }
+        .rating label {
+            font-size: 30px;
+            color: #FFD700;
+            cursor: pointer;
+        }
+        .rating label:hover {
+            color: #FFD700; /* Hover color */
+        }
+        .rating input {
+            display: none; /* Hide the radio buttons */
+        }
+        .rating .star:before {
+            content: '\2606'; /* Empty star character */
+        }
+        .rating input:checked + label:before {
+            content: '\2605'; /* Filled star character */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Rate Your Order</h1>
+        <p>Please rate your recent order and leave a review:</p>
+
+        <form action="/customer/order/submit-rating" method="POST">
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <div class="rating">
+                    <input type="radio" id="star1" name="rating" value="1" data-value="1">
+                    <label class="star" for="star1"></label>
+                    <input type="radio" id="star2" name="rating" value="2" data-value="2">
+                    <label class="star" for="star2"></label>
+                    <input type="radio" id="star3" name="rating" value="3" data-value="3">
+                    <label class="star" for="star3"></label>
+                    <input type="radio" id="star4" name="rating" value="4" data-value="4">
+                    <label class="star" for="star4"></label>
+                    <input type="radio" id="star5" name="rating" value="5" data-value="5">
+                    <label class="star" for="star5"></label>
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <label for="review">Review:</label>
+                <textarea class="form-control" id="review" name="review" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // JavaScript to set the values of visible input fields when the form is submitted
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const ratingValue = document.querySelector('input[name="rating"]:checked');
+            const reviewValue = document.querySelector('textarea[name="review"]');
+            
+            if (!ratingValue || !reviewValue) {
+                // Handle validation or show an error message if necessary
+                event.preventDefault(); // Prevent the form from submitting
+            } else {
+                // Set the values of the visible input fields
+                document.querySelector('input[name="rating"]').value = ratingValue.value;
+                document.querySelector('input[name="review"]').value = reviewValue.value;
+            }
+        });
+    
+        // JavaScript to dynamically update the appearance of stars based on the selected rating
+        const stars = document.querySelectorAll('.rating label');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const selectedRating = star.getAttribute('for').replace('star', '');
+                stars.forEach((s, index) => {
+                    if (index < selectedRating) {
+                        s.classList.add('filled');
+                    } else {
+                        s.classList.remove('filled');
+                    }
+                });
+    
+                // Update the hidden input field with the selected rating
+                document.querySelector('input[name="rating"]').value = selectedRating;
+            });
+        });
+    </script>
+</body>
+</html>

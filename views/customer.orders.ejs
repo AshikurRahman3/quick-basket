@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Orders</title>
+    <!-- Include Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+.navbar-custom {
+            background: linear-gradient(to left, #85e6ff, #008aff);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar-custom .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-custom .navbar-nav .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .navbar-custom .btn-signin {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .navbar-custom .btn-signin:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .product-item {
+    display: flex;
+    align-items: center;
+    
+}
+
+.product-image img {
+    max-width: 100px; /* Adjust the width as needed */
+    margin-right: 20px; /* Adjust the spacing between the image and details */
+}
+
+
+
+/* The modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Overlay background */
+  }
+
+  /* Modal content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* 80% width */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    text-align: center;
+  }
+
+  /* Close button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <!-- Left Side: Website Name -->
+            <a class="navbar-brand" href="/customer/home">Quick Basket</a>
+            
+           
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+        
+                  <li class="nav-item dropdown">
+        
+                    <% if(customerName){ %>
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" style="margin-right: 10px; margin-left: 30px;">
+                        <%= customerName %>
+                      </a>
+                      <% }else{ %>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" >
+                          not user
+                        </a>
+                        <% } %>
+        
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                            <li><a class="dropdown-item" href="/customer/orders">Orders</a></li>
+                            <li><a class="dropdown-item" href="/api/bank/login">Bank</a></li>
+                            <li><a class="dropdown-item" href="/customer/edit-profile">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Help</a></li>
+                            <li><a class="dropdown-item" href="#">About</a></li>
+                            <li>
+                              <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="/" onclick="confirmLogout()">Logout</a>
+                            </li>
+                          </ul>
+                  </li>
+                </ul>
+              </div>
+        </div>
+    </nav>
+
+
+    <div class="container mt-3">
+        <h3>Your Orders</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Total Price</th>
+                    <th>Shop</th>
+                    <th>Status</th>
+                    <th>Products</th>
+                    <th style="width: 10%;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order => { %>
+                    <tr >
+                        <td><%= order._id %></td>
+                        <td><%= order.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></td>
+                        <td>Tk. <big><b><%= order.totalAmount %></b></big></td>
+                        <td><b><%= order.shopId.name %></b>, <small><%= order.shopId.city %></small></td>
+                        <td>
+                            <% if (order.status === 'pending') { %>
+                                <p class="text-info "><b><%= order.status %></b></p>
+                                <% } else if(order.status === 'rejected') { %>
+                                    <p class="text-danger"><b><%= order.status %></b></p>
+                                    <% } else if (order.status === 'accepted') { %>
+                                        <p class="text-warning"><b><%= order.status %></b></p>
+                                        <% } else { %>
+                                            <p class="text-success"><b><%= order.status %></b></p>
+                                            <% } %>
+                            
+                        </td>
+                        <td>
+                            <ul>
+                                <% order.products.forEach(product => { %>
+                                    <li>
+                                      <%  if(product) { %>
+                                            <div class="product-item">
+                                                <div class="product-image">
+                                                    <img src="/<%= product.product_image.replace(/\\/g, '/') %>" alt="<%= product.name %>">
+                                                </div>
+                                                <div class="product-details">
+                                                    <h5><%= product.name %> <small>( <%= product.description %> )</small></h5>
+                                                    <!-- <p>Tk. <%= product.price %></p>
+                                                    <p>Quantity: <%= product.quantity %></p>
+                                                    <p>Total Price: Tk. <%= product.productTotalPrice %></p> -->
+                                                    <p>Price: <%= product.price %>, &emsp; Quantity: <%= product.quantity %>  </p>
+                                                </div>
+                                            </div>
+                                       <% } %>
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        </td>
+                        <td>
+                            <% if (order.status === 'supplied') { %>
+                              <% if (order.rating === 0) { %>
+                                <form action="/customer/order/rating" method="POST">
+                                  <input type="hidden" name="orderId" value="<%= order._id %>">
+                                  <button type="submit" class="btn btn-sm btn-success">Rate order</button>
+                                </form>
+                              <% } else{ %>
+                                <p>
+                                    <% for (let i = 0; i < order.rating; i++) { %>
+                                      <span style="color: #FFD700;">&#9733;</span>
+                                    <% } %>
+                                  </p>
+                                  <!-- Update the button to use a class instead of id -->
+                                    <button class="showReviewBtn btn-success">Show Review</button>
+
+                                    <!-- Update the corresponding modal for each order to have a unique id -->
+                                    <div class="modal" id="reviewModal<%= order._id %>">
+                                    <div class="modal-content">
+                                        <span class="close" id="closeReviewBtn<%= order._id %>">&times;</span>
+                                        <p> Rating:
+                                            <% for (let i = 0; i < order.rating; i++) { %>
+                                              <span style="color: #FFD700;">&#9733;</span>
+                                            <% } %>
+                                          </p>
+                                        <p><span><b>review: </b></span><%= order.review %></p>
+                                    </div>
+                                    </div>
+
+                                  
+                              <% } %>
+                            <% } %>
+                          </td>
+
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Include Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+
+
+    <script>
+       // JavaScript to handle showing and hiding the modal
+const showReviewBtns = document.querySelectorAll('.showReviewBtn');
+const closeReviewBtns = document.querySelectorAll('.close');
+const reviewModals = document.querySelectorAll('.modal');
+
+showReviewBtns.forEach((showReviewBtn, index) => {
+  showReviewBtn.addEventListener('click', () => {
+    reviewModals[index].style.display = 'block';
+  });
+
+  closeReviewBtns[index].addEventListener('click', () => {
+    reviewModals[index].style.display = 'none';
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === reviewModals[index]) {
+      reviewModals[index].style.display = 'none';
+    }
+  });
+});
+
+    </script>
+    
+    
+    
+    
+    
+    
+      
+</body>
+</html>

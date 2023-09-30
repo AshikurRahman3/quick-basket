@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Homepage</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+
+
+        .navbar-custom {
+                    background: linear-gradient(to left, #85e6ff, #008aff);
+                }
+        
+                .navbar-brand {
+                    font-weight: bold;
+                    color: white;
+                }
+        
+                .navbar-custom .navbar-nav .nav-link {
+                    color: #fff !important;
+                }
+        
+                .navbar-custom .navbar-nav .nav-link:hover {
+                    opacity: 0.8;
+                }
+        
+                .navbar-custom .btn-signin {
+                    background-color: transparent;
+                    border: 1px solid #fff;
+                    color: #fff;
+                }
+        
+                .navbar-custom .btn-signin:hover {
+                    background-color: #fff;
+                    color: #000;
+                }
+        
+                /* Custom CSS to style the active and inactive buttons */
+                .btn.btn-primary.active {
+                    background-color: #28a745; /* Green for active button */
+                    border-color: #28a745;
+                }
+            
+                .btn.btn-primary:not(.active) {
+                    background-color: #f8f9fa; /* Gray for inactive buttons */
+                    border-color: #e9ecef;
+                    color: #000; /* Text color for inactive buttons */
+                }
+        
+        
+                .shop-card {
+                    margin-bottom: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    transition: transform 0.3s ease-in-out;
+                    position: relative;
+                    overflow: hidden;
+                }
+        
+                .shop-card:hover {
+                    transform: scale(1.05);
+                }
+        
+                
+        
+                .offer-badge {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background-color: #ff5722;
+                    color: #fff;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 14px;
+                }
+        
+                .shop-details {
+                    padding-top: 10px;
+                    text-align: center;
+                }
+        
+                .shop-details h6 {
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+        
+                .shop-details p {
+                    margin-bottom: 0;
+                }
+        
+                
+            </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#"><%=shop.name %></a>
+        <span class="navbar-text"><%= shop.city %></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/shop/add-product">Add Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Category</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> -->
+
+
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <!-- Left Side: Website Name -->
+        <a class="navbar-brand" href="/api/shop/home">Quick Basket</a>
+        
+
+        <!-- Center-aligned Search input field -->
+        <div class="d-flex align-items-center flex-grow-1">
+            <label for="searchInput" class="form-label" ></label>
+            <input type="text" class="form-control mx-auto" id="searchInput" placeholder="Search products...">
+        </div>
+       
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/shop/add-product">Add Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/shop/add-category">Add Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/shop/change-offer">Change Offer</a>
+                </li>
+                
+              <li class="nav-item dropdown">
+    
+                <% if(shop.name){ %>
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="margin-right: 10px; margin-left: 30px;">
+                    <%=shop.name %>
+                  </a>
+                  <% }else{ %>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false" >
+                      not user
+                    </a>
+                    <% } %>
+    
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                        <li><a class="dropdown-item" href="/api/shop/orders">Orders</a></li>
+                        <li><a class="dropdown-item" href="/api/bank/login">Bank</a></li>
+                        <li><a class="dropdown-item" href="/api/shop/edit-profile">Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Help</a></li>
+                        <li><a class="dropdown-item" href="#">About</a></li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="/" onclick="confirmLogout()">Logout</a>
+                        </li>
+                      </ul>
+              </li>
+            </ul>
+          </div>
+    </div>
+</nav>
+
+<h4 style="margin-top: 20px;" class="text-center" href="#"><%=shop.name %>, <%=shop.city%></h4>
+
+<!-- Category Tabs -->
+<div class="container mt-1">
+    <h5><span style="color: #FFD700;">&#9733; </span><%= shop.rating %> <span style="color: gray; "><small>( <%= shop.ratedOrders %> ratings )</small></span>, &emsp; <%= shop.offer %>% offer</h5>
+    <ul class="nav nav-tabs" id="categoryTabs" role="tablist">
+        <!-- Add "All" category as the default with the "active" class -->
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="tabAll" data-toggle="tab" href="#all-content" role="tab" aria-controls="all-content" aria-selected="true">All</a>
+        </li>
+
+        <% catagories.forEach((category, index) => { %>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="tab<%= category._id %>" data-toggle="tab" href="#<%= category._id %>-content" role="tab" aria-controls="<%= category._id %>-content" aria-selected="<%= index === 0 %>"><%= category.name %></a>
+            </li>
+        <% }) %>
+    </ul>
+    <div class="tab-content" id="categoryTabsContent">
+
+         <!-- Add a new tab content for the "All" category -->
+         <div class="tab-pane fade show active" id="all-content" role="tabpanel" aria-labelledby="tabAll">
+            <!-- Products from all categories -->
+            <div class="row" style="margin-top: 10px;">
+                <% products.forEach((product) => { %>
+
+                    <div  class="category-product card mb-3 col-12 col-sm-3 col-md-3 mb-4 shop-card" data-category="<%= product.category %>" data-product-id="<%= product._id %>">
+                        <div>
+                            
+                            <div class="card-body">
+                                <img src="/<%= product.product_image.replace(/\\/g, '/') %>" height="150px" class="card-img-top" alt="<%= product.name %>">
+                                <div class="card-body">
+                                    <p class="card-title"><b><%= product.name %></b></p>
+                                    <div class="input-group justify-content-between">
+                                        <p class="card-text"><small><%= product.description %></small></p>
+                                        <p class="card-text"><small>Tk. <b><%= product.price %></b> (Stock: <%= product.stock %>)</small></p>
+                                    </div>
+                                    
+                                    <div class="input-group justify-content-end">
+                                        
+                                        <form action="/api/shop/edit-product" method="POST">
+                                            <input type="hidden" name="productId" value="<%= product._id %>">
+                                            <button class="btn btn-success btn-sm edit-btn" style="margin-right: 10px;" type="submit">Edit</button>
+                                          </form>
+                                        <!-- <button class="btn btn-danger ml-auto delete-btn">Delete</button> -->
+                                        <button class="btn btn-danger btn-sm ml-auto delete-btn" data-product-name="<%= product.name %>" data-product-id="<%= product._id %>">Delete</button>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% }) %>
+            </div>
+        </div>
+
+        <!-- Add tab content for other categories -->
+        <% catagories.forEach((category, index) => { %>
+            <div class="tab-pane fade" id="<%= category._id %>-content" role="tabpanel" aria-labelledby="tab<%= category._id %>">
+                <!-- Products for <%= category.name %> -->
+                <div class="row">
+                    <% products.forEach((product) => { %>
+                        <% if (product.category.toString() === category._id.toString()) { %>
+
+
+                            <div class="card mb-3 col-12 col-sm-3 col-md-3 mb-4 shop-card category-product" data-category="<%= category._id %>">
+                                <div class="card-body">
+                                    <img src="/<%= product.product_image.replace(/\\/g, '/') %>" height="150px" class="card-img-top" alt="<%= product.name %>">
+                                    <div class="card-body">
+                                        <p class="card-title"><b><%= product.name %></b></p>
+                                        <div class="input-group justify-content-between">
+                                            <p class="card-text"><small><%= product.description %></small></p>
+                                            <p class="card-text"><small>Tk. <b><%= product.price %></b> (Stock: <%= product.stock %>)</small></p>
+                                        </div>
+                                        
+                                        <div class="input-group justify-content-end">
+                                            
+                                            <form action="/api/shop/edit-product" method="POST">
+                                                <input type="hidden" name="productId" value="<%= product._id %>">
+                                                <button class="btn btn-success btn-sm edit-btn" style="margin-right: 10px;" type="submit">Edit</button>
+                                              </form>
+                                            <!-- <button class="btn btn-danger ml-auto delete-btn">Delete</button> -->
+                                            <button class="btn btn-danger btn-sm ml-auto delete-btn" data-product-name="<%= product.name %>" data-product-id="<%= product._id %>">Delete</button>
+ 
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        <% } %>
+                    <% }) %>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Add click event listener to category tabs
+        $('#categoryTabs a').on('click', function(e) {
+            e.preventDefault();
+            // Remove 'active' class from all tabs and tab content
+            $('#categoryTabs .nav-link').removeClass('active');
+            $('#categoryTabsContent .tab-pane').removeClass('show active');
+
+            // Add 'active' class to the clicked tab
+            $(this).addClass('active');
+
+            // Show the corresponding tab content
+            var targetTabId = $(this).attr('href');
+            $(targetTabId).addClass('show active');
+        });
+    });
+</script>
+
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+    document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const productId = this.getAttribute('data-product-id');
+        const productName = this.getAttribute('data-product-name');
+        if (confirm(`Are you sure you want to delete product  "${productName}"?`)) {
+            // If the user confirms, call the deleteProduct function with the productId
+            deleteProduct(productId);
+        }
+    });
+});
+
+function deleteProduct(productId) {
+  fetch(`/api/shop/delete-product/${productId}`, {
+    method: 'DELETE',
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Handle successful deletion
+      console.log(data);
+      // Optionally, remove the card or update the UI
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+</script>
+
+<script>
+    // Function to filter products based on search query
+    function filterProductsBySearch() {
+        const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+        const productCards = document.querySelectorAll('.category-product');
+
+        productCards.forEach(card => {
+            const productName = card.querySelector('.card-title').textContent.toLowerCase();
+
+            if (productName.includes(searchQuery)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Add an event listener to the search input field
+    document.getElementById('searchInput').addEventListener('input', filterProductsBySearch);
+</script>
+</body>
+</html>

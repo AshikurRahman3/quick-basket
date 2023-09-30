@@ -1,0 +1,51 @@
+<div id="shopListings" class="row">
+    <!-- Use EJS tags to display shop listings -->
+    <% shops.forEach(function(shop) { %>
+        <form action="/shop_details" method="post" class="card mb-3 col-12 col-sm-3 col-md-3 mb-4 shop-card">
+            <!-- Hidden input to store the shop ID -->
+            <input type="hidden" name="default_shopId" value="<%= shop._id %>">
+            <button type="submit" class="card-link">
+                <img src="<%= shop.shop_image.replace(/\\/g, '/') %>" class="card-img-top shop-image" alt="<%= shop.name %>">
+                <div class="offer-badge">15%</div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2"> <!-- Adjusted margin-bottom (mb-2) -->
+                        <h5 class="card-title text-end"><%= shop.name %></h5>
+                        <p>&#9733;<%= shop.rating %>  (<%= shop.orders %>)</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-0"> <!-- Adjusted margin-bottom (mb-0) -->
+                        <p class="mb-0"><%= shop.shop_type %></p> <!-- Adjusted margin-bottom (mb-0) -->
+                        <p class="mb-0">tk 50</p> <!-- Adjusted margin-bottom (mb-0) -->
+                    </div>
+                </div>
+            </button>
+        </form>
+    <% }); %>
+</div>
+
+
+
+<div id="shopListings" class="row">
+    <!-- Use EJS tags to display shop listings -->
+    <% shops.forEach(function(shop) { %>
+        <div class="card mb-3 col-12 col-sm-3 col-md-3 mb-4 shop-card" data-city="<%= shop.city %>" data-type="<%= shop.shop_type %>">
+            <form action="/shop_details" method="post" class="card mb-3 col-12 col-sm-3 col-md-3 mb-4 shop-card">
+                <!-- Hidden input to store the shop ID -->
+                <input type="hidden" name="default_shopId" value="<%= shop._id %>">
+                <button type="submit" class="card-link">
+                    <img src="<%= shop.shop_image.replace(/\\/g, '/') %>" class="card-img-top shop-image" alt="<%= shop.name %>">
+                    <div class="offer-badge">15%</div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2"> 
+                            <h5 class="card-title text-end"><%= shop.name %></h5>
+                            <p>&#9733;<%= shop.rating %>  (<%= shop.orders %>)</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-0"> 
+                            <p class="mb-0"><%= shop.shop_type %></p> 
+                            <p class="mb-0">tk 50</p> 
+                        </div>
+                    </div>
+                </button>
+            </form>
+        </div>
+    <% }); %>
+</div>

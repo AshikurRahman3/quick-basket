@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+
+        .navbar-custom {
+            background: linear-gradient(to left, #85e6ff, #008aff);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar-custom .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-custom .navbar-nav .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .navbar-custom .btn-signin {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .navbar-custom .btn-signin:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+
+        .cart-icon {
+      position: relative;
+      transition: transform 0.3s ease-in-out;
+      padding: 5px;
+    }
+
+    .cart-icon:hover {
+            transform: scale(1.5);
+        }
+
+    .cart-badge {
+      background-color: #ff0000;
+      /* Set the background color for the badge */
+      color: #ffffff;
+      /* Set the text color for the badge */
+      border-radius: 50%;
+      /* Add a circular shape to the badge */
+      padding: 4px 8px;
+      /* Adjust the padding as needed */
+    }
+
+    .cart-badge:hover {
+      background-color: #f8f9fa;
+    }
+
+        .shop-card {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shop-card:hover {
+            transform: scale(1.05);
+        }
+
+        
+
+        .offer-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff5722;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .shop-details {
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        .shop-details h6 {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .shop-details p {
+            margin-bottom: 0;
+        }
+
+        .shop-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shop-name {
+  margin: 0; /* Remove default margin for h4 */
+  text-align: center; /* Center the text horizontally */
+  flex-grow: 1; /* Allow shop name to grow and take up available space */
+}
+
+.shop-reviews {
+  margin: 0; /* Remove default margin for h5 */
+}
+
+
+
+        
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <!-- Left Side: Website Name -->
+        <a class="navbar-brand" href="/customer/home">Quick Basket</a>
+
+        
+        
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+
+                <li>
+                    <form id="cartForm" action="/customer/cart" method="POST">
+                        <input type="hidden" name="cart" id="cartInput" value="">
+                        <button type="submit" class="nav-link" style="border: none; background: none;">
+                          <img src="/images/cart_icon.png" alt="Cart" width="32" height="32" class="cart-icon" title="cart">
+                          <span class="badge bg-secondary cart-badge"></span>
+                        </button>
+                      </form>
+                </li>
+    
+              <li class="nav-item dropdown">
+    
+                <% if(customerName){ %>
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="margin-right: 10px; margin-left: 30px;">
+                    <%= customerName %>
+                  </a>
+                  <% }else{ %>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false" >
+                      not user
+                    </a>
+                    <% } %>
+    
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                        <li><a class="dropdown-item" href="/customer/orders">Orders</a></li>
+                        <li><a class="dropdown-item" href="/api/bank/login">Bank</a></li>
+                        <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Help</a></li>
+                        <li><a class="dropdown-item" href="#">About</a></li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="/" onclick="confirmLogout()">Logout</a>
+                        </li>
+                      </ul>
+              </li>
+            </ul>
+          </div>
+    </div>
+</nav>
+
+
+
+<div class="shop-info" style="margin-top: 10px;">
+    <h4 class="shop-name"><%= shop.name %>, <%= shop.city %></h4>
+    <h5 class="shop-reviews"  style="margin-right: 50px;"><a style="color: #ff007f;" href="/customer/shop/reviews">reviews</a></h5>
+  </div>
+  
+  
+<!-- Category Tabs -->
+<div class="container mt-2">
+    <h5><span style="color: #FFD700;">&#9733; </span><%= shop.rating %> <span style="color: gray; "><small>( <%= shop.ratedOrders %> ratings )</small></span>
+    <% if (shop.offer !== 0) { %>
+        , &emsp; <%= shop.offer %>% offer
+        <% } %>
+    </h5>
+    <ul class="nav nav-tabs" id="categoryTabs" role="tablist">
+        <% catagories.forEach((category, index) => { %>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link <%= index === 0 ? 'active' : '' %>" id="tab<%= category._id %>" data-toggle="tab" href="#<%= category._id %>-content" role="tab" aria-controls="<%= category._id %>-content" aria-selected="<%= index === 0 %>"><%= category.name %></a>
+            </li>
+        <% }) %>
+    </ul>
+    <div class="tab-content" id="categoryTabsContent">
+        <% catagories.forEach((category, index) => { %>
+            <div class="tab-pane fade <%= index === 0 ? 'show active' : '' %>" id="<%= category._id %>-content" role="tabpanel" aria-labelledby="tab<%= category._id %>">
+                <!-- Products for <%= category.name %> -->
+                <div class="row" style="margin-top: 10px;">
+                    <% products.forEach((product) => { %>
+                        <% if (product.category.toString() === category._id.toString()) { %>
+
+
+                            <div class=" category-product card mb-3 col-12 col-sm-3 col-md-3 mb-4 shop-card" data-category="<%= category._id %>" data-product-id="<%= product._id %>">
+                                <div >
+                                    <img src="/<%= product.product_image.replace(/\\/g, '/') %>" height="150px" class="card-img-top" alt="<%= product.name %>">
+                                    <div class="card-body">
+                                        <p class="card-title"><b><%= product.name %></b></p>
+                                        <div class="input-group justify-content-between">
+                                            <p class="card-text"><small><%= product.description %></small></p>
+                                            <p class="card-text"><small>Tk. <b><%= product.price %></b></small></p>
+                                        </div>
+                                       
+                                        <div class="input-group">
+                                            <button class="btn btn-primary add-to-cart-btn" style="align-content: start;">Add to Cart</button>
+                                            <button class="btn btn-danger decrease-quantity" style="margin-left: 50px;"><big><b>-</b></big></button>
+                                            <span class="quantity" style="padding-left: 20px; padding-right: 20px; text-align: center;"></span>
+                                            <button class="btn btn-success increase-quantity"><big><b>+</b></big></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% }) %>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Add click event listener to category tabs
+        $('#categoryTabs a').on('click', function(e) {
+            e.preventDefault();
+            // Remove 'active' class from all tabs and tab content
+            $('#categoryTabs .nav-link').removeClass('active');
+            $('#categoryTabsContent .tab-pane').removeClass('show active');
+
+            // Add 'active' class to the clicked tab
+            $(this).addClass('active');
+
+            // Show the corresponding tab content
+            var targetTabId = $(this).attr('href');
+            $(targetTabId).addClass('show active');
+        });
+    });
+</script>
+
+
+<script>
+   $(document).ready(function() {
+    // Initialize cart data
+    var cart = [];
+
+    // Update cart badge
+    function updateCartBadge() {
+        var totalQuantity = cart.reduce(function(acc, item) {
+            return acc + item.quantity;
+        }, 0);
+        $('.cart-badge').text(totalQuantity);
+    }
+
+    // Function to update the button text and quantity text
+    function updateButtonAndQuantity(productId) {
+        var product = cart.find(function(item) {
+            return item.productId === productId;
+        });
+        
+        var $productCard = $('.category-product[data-product-id="' + productId + '"]');
+        var $addToCartBtn = $productCard.find('.add-to-cart-btn');
+        var $quantityText = $productCard.find('.quantity');
+        
+        if (product) {
+            // Product is in the cart
+            if (product.quantity > 0) {
+                $addToCartBtn.text('Added');
+                $quantityText.text(product.quantity);
+            } else {
+                // If quantity is 0, revert back to "Add to Cart"
+                $addToCartBtn.text('Add to Cart');
+                $quantityText.text('');
+            }
+        } else {
+            // Product is not in the cart
+            $addToCartBtn.text('Add to Cart');
+            $quantityText.text('');
+        }
+    }
+
+    // Add to Cart button click event
+    $('.add-to-cart-btn').on('click', function() {
+        var productId = $(this).closest('.category-product').data('product-id');
+        var product = cart.find(function(item) {
+            return item.productId === productId;
+        });
+
+        if (product) {
+            // Product already in cart, increase quantity
+            product.quantity++;
+        } else {
+            // Product not in cart, add it
+            cart.push({
+                productId: productId,
+                quantity: 1
+            });
+        }
+
+        // Update cart badge
+        updateCartBadge();
+
+        // Update button text and quantity text
+        updateButtonAndQuantity(productId);
+    });
+
+    // Decrease quantity button click event
+    $('.decrease-quantity').on('click', function() {
+        var productId = $(this).closest('.category-product').data('product-id');
+        var product = cart.find(function(item) {
+            return item.productId === productId;
+        });
+
+        if (product && product.quantity > 0) {
+            product.quantity--;
+
+            // Update quantity display
+            $(this).siblings('.quantity').text(product.quantity);
+
+            // Update button text and quantity text
+            updateButtonAndQuantity(productId);
+
+            // Update cart badge
+            updateCartBadge();
+        }
+    });
+
+    // Increase quantity button click event
+    $('.increase-quantity').on('click', function() {
+        var productId = $(this).closest('.category-product').data('product-id');
+        var product = cart.find(function(item) {
+            return item.productId === productId;
+        });
+
+        if (product) {
+            product.quantity++;
+
+            // Update quantity display
+            $(this).siblings('.quantity').text(product.quantity);
+
+            // Update button text and quantity text
+            updateButtonAndQuantity(productId);
+
+            // Update cart badge
+            updateCartBadge();
+        }
+    });
+
+
+
+    // Function to send cart items to the server
+    function sendCartToServer() {
+      // Convert the cart array to a JSON string
+      var cartData = JSON.stringify(cart);
+
+      // Set the cartData value in the hidden input field
+      $('#cartInput').val(cartData);
+
+      // Submit the cartForm to the server
+      $('#cartForm').submit();
+    }
+
+    // Cart button click event to send cart items to the server
+    $('.cart-icon').on('click', function() {
+      sendCartToServer();
+    });
+
+    
+});
+
+</script>
+
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
