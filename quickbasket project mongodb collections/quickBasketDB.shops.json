@@ -1,0 +1,81 @@
+[{
+  "_id": {
+    "$oid": "64fec157a37e30913e4a3052"
+  },
+  "name": "Ashikur Rahman",
+  "email": "ashikur.rahman9656@gmail.com",
+  "password": "123",
+  "contactNo": "+8801726282979",
+  "address": "Housing state",
+  "city": "Sylhet",
+  "shop_type": "Grocery",
+  "shop_image": "uploads\\shopPhotos\\shop_image-1694417239079-452748013.jpg",
+  "rating": 0,
+  "orders": 0,
+  "createdAt": {
+    "$date": "2023-09-11T07:27:19.112Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ff62264a6a5f9c8d2b979a"
+  },
+  "name": "RH Bandhan",
+  "email": "rhbandhan1@gmail.com",
+  "password": "123",
+  "contactNo": "01712345678",
+  "address": "Nilfamari",
+  "city": "Rangpur",
+  "shop_type": "Fruit",
+  "shop_image": "uploads\\shopPhotos\\shop_image-1694458406020-955166025.jpeg",
+  "rating": 0,
+  "orders": 0,
+  "createdAt": {
+    "$date": "2023-09-11T18:53:26.037Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "name": "Bengal Meat",
+  "email": "bengalmeat@gmail.com",
+  "password": "123",
+  "contactNo": "123456",
+  "address": "Gulshan",
+  "city": "Dhaka",
+  "shop_type": "Meat",
+  "bankAccountNumber": 222222,
+  "shop_image": "uploads\\shopPhotos\\shop_image-1695029587075-180075361.jpeg",
+  "rating": 3.3,
+  "orders": 3,
+  "createdAt": {
+    "$date": "2023-09-12T10:18:56.146Z"
+  },
+  "__v": 0,
+  "offer": 20,
+  "ratedOrders": 3,
+  "ratingTotalValue": 10
+},
+{
+  "_id": {
+    "$oid": "65031d948035179c92afb18b"
+  },
+  "name": "Amonia Fish Shop",
+  "email": "amonia@gmail.com",
+  "password": "123",
+  "contactNo": "123456",
+  "address": "Chittagong",
+  "city": "Chittagong",
+  "shop_type": "Fish",
+  "bankAccountNumber": 444444,
+  "shop_image": "uploads\\shopPhotos\\shop_image-1694702996423-631253558.jpeg",
+  "rating": 0,
+  "orders": 0,
+  "createdAt": {
+    "$date": "2023-09-14T14:49:56.447Z"
+  },
+  "__v": 0
+}]

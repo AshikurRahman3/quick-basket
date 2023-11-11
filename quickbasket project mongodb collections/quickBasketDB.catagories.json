@@ -1,0 +1,342 @@
+[{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2bb"
+  },
+  "name": "Fresh Water Fish",
+  "shop_type": "Fish",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2bc"
+  },
+  "name": "Sea Fish",
+  "shop_type": "Fish",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2bd"
+  },
+  "name": "Chicken",
+  "shop_type": "Meat",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2be"
+  },
+  "name": "Beef",
+  "shop_type": "Meat",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2bf"
+  },
+  "name": "Mutton",
+  "shop_type": "Meat",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c0"
+  },
+  "name": "Duck",
+  "shop_type": "Meat",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c1"
+  },
+  "name": "Other Birds",
+  "shop_type": "Meat",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c2"
+  },
+  "name": "Local Fruits",
+  "shop_type": "Fruit",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c3"
+  },
+  "name": "Imported Fruits",
+  "shop_type": "Fruit",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c4"
+  },
+  "name": "Leafy Vegetables",
+  "shop_type": "Vegetable",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c5"
+  },
+  "name": "Fresh Vegetables",
+  "shop_type": "Vegetable",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c6"
+  },
+  "name": "Eggs",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c7"
+  },
+  "name": "Dairy",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c8"
+  },
+  "name": "Atta-Maida",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2c9"
+  },
+  "name": "Rice",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2ca"
+  },
+  "name": "Dal",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2cb"
+  },
+  "name": "Sugar",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2cc"
+  },
+  "name": "Salt",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2cd"
+  },
+  "name": "Spices",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2ce"
+  },
+  "name": "Biscuits",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2cf"
+  },
+  "name": "Tea",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d0"
+  },
+  "name": "Coffee",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d1"
+  },
+  "name": "Beverages",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d2"
+  },
+  "name": "Frozen Snacks",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d3"
+  },
+  "name": "Edible Oil",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d4"
+  },
+  "name": "Ice Cream",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d5"
+  },
+  "name": "Noodles",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d6"
+  },
+  "name": "Soap",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d7"
+  },
+  "name": "Detergent",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d8"
+  },
+  "name": "Dishwasher",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2d9"
+  },
+  "name": "Handwash",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2da"
+  },
+  "name": "Shampoo",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2db"
+  },
+  "name": "Toothpaste",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2dc"
+  },
+  "name": "Face Wash",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2dd"
+  },
+  "name": "Cakes",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2de"
+  },
+  "name": "Breads-Buns",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2df"
+  },
+  "name": "Chocolates",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2e0"
+  },
+  "name": "Batteries",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2e1"
+  },
+  "name": "Other Snacks",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64ffce2560a71713c5f9e2e2"
+  },
+  "name": "Chips",
+  "shop_type": "Grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65055978c1ece2d7e3eb4b44"
+  },
+  "name": "Cooked Foods",
+  "shop_type": "65003b1087390274f0423a85",
+  "createdOn": {
+    "$date": "2023-09-16T07:30:00.308Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6506f39e5304fbed1437d3a9"
+  },
+  "name": "Ready to cook food",
+  "shop_type": "65003b1087390274f0423a85",
+  "createdOn": {
+    "$date": "2023-09-17T12:39:58.648Z"
+  },
+  "__v": 0
+}]

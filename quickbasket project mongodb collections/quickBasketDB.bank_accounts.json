@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "65015665c32eab7f9ea8193f"
+  },
+  "name": "Ashikur Rahman",
+  "email": "ashikur.rahman9656@gmail.com",
+  "password": "123",
+  "contactNo": "+8801726282979",
+  "bankAccountNumber": 333333,
+  "bankAccountBalance": 2910,
+  "createdOn": {
+    "$date": "2023-09-13T06:27:49.068Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6501779b2e4e10e3fb7a6b09"
+  },
+  "name": "Quick Basket Admin",
+  "email": "admin@gmail.com",
+  "password": "123",
+  "contactNo": "12345",
+  "bankAccountNumber": 111111,
+  "bankAccountBalance": 10360,
+  "createdOn": {
+    "$date": "2023-09-13T08:49:31.962Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6501c1e2c86dff3d09e57bce"
+  },
+  "name": "Bengal Meat",
+  "email": "bengalmeat@gmail.com",
+  "password": "123",
+  "contactNo": "1234",
+  "bankAccountNumber": 222222,
+  "bankAccountBalance": 7410,
+  "createdOn": {
+    "$date": "2023-09-13T14:06:26.507Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6503c88131b5455c2f77c377"
+  },
+  "name": "RH Bandhan",
+  "email": "rhbandhan1@gmail.com",
+  "password": "123",
+  "contactNo": "123456",
+  "bankAccountNumber": 555555,
+  "bankAccountBalance": 5320,
+  "createdOn": {
+    "$date": "2023-09-15T02:59:13.482Z"
+  },
+  "__v": 0
+}]

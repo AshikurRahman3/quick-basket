@@ -1,0 +1,143 @@
+[{
+  "_id": {
+    "$oid": "64ffee8e93bcc754ae5e810f"
+  },
+  "name": "Gala Apple",
+  "price": 250,
+  "product_image": "uploads\\shopPhotos\\product_image-1694494350738-530955762.jpg",
+  "description": "1 kg fresh",
+  "stock": 20,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2c3"
+  },
+  "shopId": {
+    "$oid": "64ff62264a6a5f9c8d2b979a"
+  },
+  "discount": 20,
+  "discount_type": "amount",
+  "__v": 0,
+  "deleted": true
+},
+{
+  "_id": {
+    "$oid": "64fff2c593bcc754ae5e812a"
+  },
+  "name": "Lichu Rajshahi",
+  "price": 160,
+  "product_image": "uploads\\shopPhotos\\product_image-1694866131882-1298503.jpg",
+  "description": "50 pieces",
+  "stock": 10,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2c2"
+  },
+  "shopId": {
+    "$oid": "64ff62264a6a5f9c8d2b979a"
+  },
+  "discount": 5,
+  "discount_type": "amount",
+  "__v": 0,
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "6501c055c86dff3d09e57bb2"
+  },
+  "name": "Chicken Drumstic with skin",
+  "price": 320,
+  "product_image": "uploads\\shopPhotos\\product_image-1694613589919-13319142.jpg",
+  "description": "1 kg",
+  "stock": 20,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2bd"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 0,
+  "discount_type": "amount",
+  "__v": 0,
+  "deleted": true
+},
+{
+  "_id": {
+    "$oid": "6501c090c86dff3d09e57bb9"
+  },
+  "name": "Chicken whole with skin",
+  "price": 200,
+  "product_image": "uploads\\shopPhotos\\product_image-1694954522418-457315439.jpg",
+  "description": "1 kg",
+  "stock": 15,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2bd"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 0,
+  "discount_type": "amount",
+  "__v": 0,
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "6501c0c8c86dff3d09e57bc0"
+  },
+  "name": "beef Kidney",
+  "price": 400,
+  "product_image": "uploads\\shopPhotos\\product_image-1694613704097-42401225.jpg",
+  "description": "1 kg",
+  "stock": 10,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2be"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 0,
+  "discount_type": "amount",
+  "__v": 0,
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "6501c101c86dff3d09e57bc7"
+  },
+  "name": "Beef Heart",
+  "price": 450,
+  "product_image": "uploads\\shopPhotos\\product_image-1694613761796-9500058.jpg",
+  "description": "1 kg",
+  "stock": 20,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2be"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 0,
+  "discount_type": "amount",
+  "__v": 0,
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "6506f15fe63e17e8dcdb81dc"
+  },
+  "name": "Rui Fish Deshi",
+  "deleted": false,
+  "price": 250,
+  "product_image": "uploads\\shopPhotos\\product_image-1694953823172-776407732.jpg",
+  "description": "1kg",
+  "stock": 20,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2bb"
+  },
+  "shopId": {
+    "$oid": "65031d948035179c92afb18b"
+  },
+  "discount": 0,
+  "discount_type": "amount",
+  "createdOn": {
+    "$date": "2023-09-17T12:30:23.183Z"
+  },
+  "__v": 0
+}]

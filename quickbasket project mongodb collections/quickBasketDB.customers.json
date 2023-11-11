@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "6500451ad07fcc491864ff10"
+  },
+  "name": "Ashikur Rahman AR",
+  "email": "ashikur.rahman9656@gmail.com",
+  "password": "123",
+  "contactNo": "+8801726282979",
+  "address": "Anderkilla",
+  "city": "Sylhet",
+  "bankAccountNumber": 333333,
+  "createdAt": {
+    "$date": "2023-09-12T11:01:46.616Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6503c79e06372c0a81763427"
+  },
+  "name": "RH Bandhan",
+  "email": "rhbandhan1@gmail.com",
+  "password": "123",
+  "contactNo": "123456",
+  "address": "Nayapara, Sust",
+  "city": "Rangpur",
+  "bankAccountNumber": 555555,
+  "createdAt": {
+    "$date": "2023-09-15T02:55:26.734Z"
+  },
+  "__v": 0
+}]

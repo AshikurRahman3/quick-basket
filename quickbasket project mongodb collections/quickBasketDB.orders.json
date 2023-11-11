@@ -1,0 +1,191 @@
+[{
+  "_id": {
+    "$oid": "6501b34894126da4853b6ecb"
+  },
+  "customerId": {
+    "$oid": "6500451ad07fcc491864ff10"
+  },
+  "shopId": {
+    "$oid": "64ff62264a6a5f9c8d2b979a"
+  },
+  "totalAmount": 400,
+  "status": "pending",
+  "products": [
+    {
+      "productId": {
+        "$oid": "64fff2c593bcc754ae5e812a"
+      },
+      "quantity": 1,
+      "productTotalPrice": 150,
+      "_id": {
+        "$oid": "6501b34894126da4853b6ecc"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "64ffee8e93bcc754ae5e810f"
+      },
+      "quantity": 1,
+      "productTotalPrice": 250,
+      "_id": {
+        "$oid": "6501b34894126da4853b6ecd"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2023-09-13T13:04:08.373Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6501c27ec86dff3d09e57bdb"
+  },
+  "customerId": {
+    "$oid": "6500451ad07fcc491864ff10"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "totalAmount": 680,
+  "status": "rejected",
+  "products": [
+    {
+      "productId": {
+        "$oid": "6501c0c8c86dff3d09e57bc0"
+      },
+      "quantity": 1,
+      "productTotalPrice": 400,
+      "_id": {
+        "$oid": "6501c27ec86dff3d09e57bdc"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6501c090c86dff3d09e57bb9"
+      },
+      "quantity": 1,
+      "productTotalPrice": 280,
+      "_id": {
+        "$oid": "6501c27ec86dff3d09e57bdd"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2023-09-13T14:09:02.682Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6503e43d5042f807b436f71f"
+  },
+  "customerId": {
+    "$oid": "6500451ad07fcc491864ff10"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "totalAmount": 770,
+  "status": "supplied",
+  "products": [
+    {
+      "productId": {
+        "$oid": "6501c055c86dff3d09e57bb2"
+      },
+      "quantity": 1,
+      "productTotalPrice": 320,
+      "_id": {
+        "$oid": "6503e43d5042f807b436f720"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6501c101c86dff3d09e57bc7"
+      },
+      "quantity": 1,
+      "productTotalPrice": 450,
+      "_id": {
+        "$oid": "6503e43d5042f807b436f721"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2023-09-15T04:57:33.511Z"
+  },
+  "__v": 0,
+  "rating": 3,
+  "review": "Good products"
+},
+{
+  "_id": {
+    "$oid": "6504ab7d13a4692eba03a80d"
+  },
+  "customerId": {
+    "$oid": "6500451ad07fcc491864ff10"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "totalAmount": 280,
+  "status": "supplied",
+  "products": [
+    {
+      "productId": {
+        "$oid": "6501c090c86dff3d09e57bb9"
+      },
+      "quantity": 1,
+      "productTotalPrice": 280,
+      "_id": {
+        "$oid": "6504ab7d13a4692eba03a80e"
+      }
+    }
+  ],
+  "rating": 4,
+  "createdAt": {
+    "$date": "2023-09-15T19:07:41.373Z"
+  },
+  "__v": 0,
+  "review": "not bad"
+},
+{
+  "_id": {
+    "$oid": "6506f1fde63e17e8dcdb81f8"
+  },
+  "customerId": {
+    "$oid": "6503c79e06372c0a81763427"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "totalAmount": 680,
+  "status": "supplied",
+  "products": [
+    {
+      "productId": {
+        "$oid": "6501c0c8c86dff3d09e57bc0"
+      },
+      "quantity": 1,
+      "productTotalPrice": 400,
+      "_id": {
+        "$oid": "6506f1fde63e17e8dcdb81f9"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6501c090c86dff3d09e57bb9"
+      },
+      "quantity": 1,
+      "productTotalPrice": 280,
+      "_id": {
+        "$oid": "6506f1fde63e17e8dcdb81fa"
+      }
+    }
+  ],
+  "rating": 3,
+  "createdAt": {
+    "$date": "2023-09-17T12:33:01.287Z"
+  },
+  "__v": 0,
+  "review": "Worst food"
+}]
