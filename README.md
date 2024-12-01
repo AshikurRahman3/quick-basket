@@ -73,3 +73,9 @@ Quick Basket is an e-commerce platform that allows users to explore and purchase
 
     [localhost:3000](http://localhost:3000)
 
+
+## **Developer**
+
+Developed by [Ashikur Rahman](https://github.com/AshikurRahman3).  
+Feel free to explore my other projects on GitHub!
+
