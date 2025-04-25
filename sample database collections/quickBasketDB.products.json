@@ -140,4 +140,142 @@
     "$date": "2023-09-17T12:30:23.183Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b912474873e3f64c7263e"
+  },
+  "name": "Chicken whole without skin",
+  "deleted": false,
+  "price": 250,
+  "product_image": "uploads\\shopPhotos\\product_image-1745588516434-939272427.jpg",
+  "description": "1kg",
+  "stock": 20,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2bd"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 10,
+  "discount_type": "amount",
+  "createdOn": {
+    "$date": "2025-04-25T13:41:56.447Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b919474873e3f64c7264b"
+  },
+  "name": "Beef Liver",
+  "deleted": false,
+  "price": 400,
+  "product_image": "uploads\\shopPhotos\\product_image-1745588628376-721649320.jpg",
+  "description": "1kg",
+  "stock": 15,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2be"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 20,
+  "discount_type": "amount",
+  "createdOn": {
+    "$date": "2025-04-25T13:43:48.404Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b91b774873e3f64c72652"
+  },
+  "name": "Chicken Boneless",
+  "deleted": false,
+  "price": 400,
+  "product_image": "uploads\\shopPhotos\\product_image-1745588663754-373804699.jpg",
+  "description": "1kg",
+  "stock": 30,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2bd"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 30,
+  "discount_type": "amount",
+  "createdOn": {
+    "$date": "2025-04-25T13:44:23.780Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b920774873e3f64c72659"
+  },
+  "name": "Beef steak",
+  "deleted": false,
+  "price": 1500,
+  "product_image": "uploads\\shopPhotos\\product_image-1745588743098-993784797.jpg",
+  "description": "1kg",
+  "stock": 10,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2be"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 20,
+  "discount_type": "amount",
+  "createdOn": {
+    "$date": "2025-04-25T13:45:43.158Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b923274873e3f64c72660"
+  },
+  "name": "chicken drumstick",
+  "deleted": false,
+  "price": 300,
+  "product_image": "uploads\\shopPhotos\\product_image-1745588786592-11709408.jpg",
+  "description": "1kg",
+  "stock": 10,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2bd"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 20,
+  "discount_type": "amount",
+  "createdOn": {
+    "$date": "2025-04-25T13:46:26.595Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b927074873e3f64c72667"
+  },
+  "name": "mutton leg",
+  "deleted": false,
+  "price": 1200,
+  "product_image": "uploads\\shopPhotos\\product_image-1745588848094-920624863.jpg",
+  "description": "1kg",
+  "stock": 5,
+  "category": {
+    "$oid": "64ffce2560a71713c5f9e2bf"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "discount": 10,
+  "discount_type": "amount",
+  "createdOn": {
+    "$date": "2025-04-25T13:47:28.099Z"
+  },
+  "__v": 0
 }]

@@ -188,4 +188,54 @@
   },
   "__v": 0,
   "review": "Worst food"
+},
+{
+  "_id": {
+    "$oid": "680b932374873e3f64c7267e"
+  },
+  "customerId": {
+    "$oid": "6500451ad07fcc491864ff10"
+  },
+  "shopId": {
+    "$oid": "65003b1087390274f0423a85"
+  },
+  "totalAmount": 1100,
+  "status": "pending",
+  "products": [
+    {
+      "productId": {
+        "$oid": "6501c101c86dff3d09e57bc7"
+      },
+      "quantity": 1,
+      "productTotalPrice": 450,
+      "_id": {
+        "$oid": "680b932374873e3f64c7267f"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "680b912474873e3f64c7263e"
+      },
+      "quantity": 1,
+      "productTotalPrice": 250,
+      "_id": {
+        "$oid": "680b932374873e3f64c72680"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "680b91b774873e3f64c72652"
+      },
+      "quantity": 1,
+      "productTotalPrice": 400,
+      "_id": {
+        "$oid": "680b932374873e3f64c72681"
+      }
+    }
+  ],
+  "rating": 0,
+  "createdAt": {
+    "$date": "2025-04-25T13:50:27.547Z"
+  },
+  "__v": 0
 }]
