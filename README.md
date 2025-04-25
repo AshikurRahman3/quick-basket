@@ -32,8 +32,8 @@ Quick Basket is an e-commerce platform that allows users to explore and purchase
 | ![Home Screen](images/available_shops.png) | ![Cart](images/cart.png) | ![Orders page](images/customers_orders.png) |
 | Products of a shop | Orders of a Shop | Adding Product |
 | ![Products of a shop](images/shops_products.png) | ![Orders of a Shop](images/shops_orders.png) | ![Adding Product](images/adding_product.png) |
-| Adding Product Catagory | Editing Profile 
-| ![Adding Product Catagory](images/adding_catagory.png) | ![Editing Profile](images/edit_profile.png) 
+| Adding Product Catagory | Editing Profile | Changing shop offer
+| ![Adding Product Catagory](images/adding_catagory.png) | ![Editing Profile](images/edit_profile.png) | ![Changing shop offer](images/change_offer.png) 
 
 ## Technologies Used
 
