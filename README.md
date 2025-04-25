@@ -4,14 +4,19 @@ Quick Basket is an e-commerce platform that allows users to explore and purchase
 
 ## Table of Contents
 
-1. [Features](#features)  
-2. [Screenshots](#screenshots)  
-3. [Technologies Used](#technologies-used)
-4. [Usage](#usage)
-5. [Installation](#installation)  
+1. [Demo Video](#demo-video)  
+2. [Features](#features)  
+3. [Screenshots](#screenshots)  
+4. [Technologies Used](#technologies-used)
+5. [Usage](#usage)
+6. [Installation](#installation)  
  
 
 ---
+
+##  Demo Video
+[![Demo Preview](./images/quick_basket_demo_video_main_medium.gif)](./images/quick_basket_demo_video_main.mp4)  
+*Click on the image to view it in a larger size.*
 
 ## Features
 
