@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Basket</title>
+    <title>Home</title>
     <!-- Include Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
     <style>
-
-
-.navbar-custom {
+        .navbar-custom {
             background: linear-gradient(to left, #85e6ff, #008aff);
         }
 
@@ -41,14 +40,17 @@
 
         /* Custom CSS to style the active and inactive buttons */
         .btn.btn-primary.active {
-            background-color: #28a745; /* Green for active button */
+            background-color: #28a745;
+            /* Green for active button */
             border-color: #28a745;
         }
-    
+
         .btn.btn-primary:not(.active) {
-            background-color: #f8f9fa; /* Gray for inactive buttons */
+            background-color: #f8f9fa;
+            /* Gray for inactive buttons */
             border-color: #e9ecef;
-            color: #000; /* Text color for inactive buttons */
+            color: #000;
+            /* Text color for inactive buttons */
         }
 
 
@@ -65,7 +67,7 @@
             transform: scale(1.05);
         }
 
-        
+
 
         .offer-badge {
             position: absolute;
@@ -91,56 +93,58 @@
         .shop-details p {
             margin-bottom: 0;
         }
-
-        
     </style>
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
             <!-- Left Side: Website Name -->
             <a class="navbar-brand" href="/">Quick Basket</a>
-            
-            <!-- Right Side: Sign-In Button -->
-            <!-- <button onclick="redirectToURL('/customer/login')" class="btn btn-signin ms-auto" type="button" data-bs-toggle="modal" data-bs-target="#signInModal">
-                Log In
-            </button> -->
 
+            <!-- Center-aligned Search input field -->
+            <div class="d-flex align-items-center flex-grow-1">
+                <label for="searchInput" class="form-label"></label>
+                <input type="text" class="form-control mx-auto" id="searchInput" placeholder="Search shops...">
+            </div>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    
-                  <li class="nav-item dropdown">
 
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false" style="margin-right: 40px; margin-left: 30px;">
-                        Log in
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="margin-right: 40px; margin-left: 30px;">
+                            Log in
                         </a>
-        
-                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/customer/login">Login as customer</a></li>
                             <li><a class="dropdown-item" href="/api/shop/login">Login as shop</a></li>
                             <li><a class="dropdown-item" href="/api/bank/login">bank</a></li>
-                            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+
                             <li><a class="dropdown-item" href="#">Help</a></li>
                             <li><a class="dropdown-item" href="#">About</a></li>
                             <li>
-                              <hr class="dropdown-divider">
+                                <hr class="dropdown-divider">
                             </li>
-                          </ul>
-                  </li>
+                        </ul>
+                    </li>
                 </ul>
-              </div>
+            </div>
         </div>
     </nav>
 
-    
 
-    <div class="container mt-3">
+
+
+
+    <div class="container mt-2">
         <!-- City Dropdown -->
         <div class="mb-3">
-            <label for="cityDropdown" class="form-label">Select City</label>
+            <label for="cityDropdown" class="form-label"></label>
             <select class="form-select" id="cityDropdown">
                 <option value="all">All Cities</option>
                 <option value="Dhaka">Dhaka</option>
@@ -157,7 +161,7 @@
 
         <!-- Shop Type Filter Buttons -->
         <div class="mb-3">
-            <label class="form-label">Filter by Shop Type: &emsp;</label>
+            <label class="form-label">Filter by Shop Type:</label>
             <div class="btn-group" role="group" aria-label="Shop Type Filter">
                 <button type="button" class="btn btn-primary" data-filter="all">All Types</button>
                 <button type="button" class="btn btn-primary" data-filter="Grocery">Grocery</button>
@@ -172,29 +176,41 @@
         <div id="shopListings" class="row">
             <!-- Use EJS tags to display shop listings -->
             <% shops.forEach(function(shop) { %>
-                
 
-                <div class="card mb-3 col-12 col-sm-3 col-md-3 mb-4 shop-card" data-city="<%= shop.city %>" data-type="<%= shop.shop_type %>">
+
+                <div class="card mb-3 col-12 col-sm-3 col-md-3 mb-4 shop-card" data-city="<%= shop.city %>"
+                    data-type="<%= shop.shop_type %>">
                     <form action="/shop_details" method="post">
                         <!-- Hidden input to store the shop ID -->
                         <input type="hidden" name="default_shopId" value="<%= shop._id %>">
-                        <button type="submit" class="card-link" style="border: none;">
-                            <img src="<%= shop.shop_image.replace(/\\/g, '/') %>" height="200px" class="card-img-top shop-image" alt="<%= shop.name %>">
-                            <div class="offer-badge">15%</div>
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center mb-2"> 
-                                    <h5 class="card-title text-end"><%= shop.name %></h5>
-                                    <p>&#9733;<%= shop.rating %>  (<%= shop.orders %>)</p>
+                        <button type="submit" class="card-link">
+                            <img src="/<%= shop.shop_image.replace(/\\/g, '/') %>" height="200px"
+                                class="card-img-top shop-image" alt="<%= shop.name %>">
+                            <% if(shop.offer !==0){ %>
+                                <div class="offer-badge">
+                                    <%= shop.offer %>%
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center mb-0"> 
-                                    <p class="mb-0"><%= shop.shop_type %></p> 
-                                    <p class="mb-0">tk 50</p> 
-                                </div>
-                            </div>
+                                <%}%>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <h5 class="card-title text-end">
+                                                <%= shop.name %>
+                                            </h5>
+                                            <p><span style="color: red;">&#9734;</span>
+                                                <%= shop.rating %> (<%= shop.ratedOrders %>)
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mb-0">
+                                            <p class="mb-0">
+                                                <%= shop.shop_type %>
+                                            </p>
+                                            <p class="mb-0">tk 50</p>
+                                        </div>
+                                    </div>
                         </button>
                     </form>
                 </div>
-            <% }); %>
+                <% }); %>
         </div>
     </div>
 
@@ -203,88 +219,111 @@
     <footer class="bg-dark text-light py-4">
         <div class="container">
             <div class="row"">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5>Company</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Team</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5>Services</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Grocery Shop</a></li>
-                        <li><a href="#">Fish Shop</a></li>
-                        <li><a href="#">Meat Shop</a></li>
-                        <li><a href="#">Fruit Shop</a></li>
-                        <li><a href="#">Vegetable Shop</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5>Legal</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5>Follow Us</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#"><i class="bi bi-facebook"></i> Facebook</a></li>
-                        <li><a href="#"><i class="bi bi-twitter"></i> Twitter</a></li>
-                        <li><a href="#"><i class="bi bi-instagram"></i> Instagram</a></li>
-                    </ul>
-                </div>
+                <div class=" col-lg-3 col-md-6 mb-4">
+                <h5>Company</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
             </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Services</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Grocery Shop</a></li>
+                    <li><a href="#">Fish Shop</a></li>
+                    <li><a href="#">Meat Shop</a></li>
+                    <li><a href="#">Fruit Shop</a></li>
+                    <li><a href="#">Vegetable Shop</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Legal</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Follow Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="bi bi-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="bi bi-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
         </div>
     </footer>
 
-   <!-- Include Bootstrap 5 and jQuery JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // Function to filter shops based on city and shop type
-    function filterShops() {
-        const selectedCity = document.getElementById('cityDropdown').value;
-        const selectedType = document.querySelector('.btn.btn-primary.active').getAttribute('data-filter');
-        const shopListings = document.querySelectorAll('.card[data-city][data-type]');
+    <!-- Include Bootstrap 5 and jQuery JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to filter shops based on city and shop type
+        function filterShops() {
+            const selectedCity = document.getElementById('cityDropdown').value;
+            const selectedType = document.querySelector('.btn.btn-primary.active').getAttribute('data-filter');
+            const shopListings = document.querySelectorAll('.card[data-city][data-type]');
 
-        shopListings.forEach(listing => {
-            const city = listing.getAttribute('data-city');
-            const type = listing.getAttribute('data-type');
+            shopListings.forEach(listing => {
+                const city = listing.getAttribute('data-city');
+                const type = listing.getAttribute('data-type');
 
-            if ((selectedCity === 'all' || city === selectedCity) && (selectedType === 'all' || type === selectedType)) {
-                listing.style.display = 'block';
-            } else {
-                listing.style.display = 'none';
-            }
+                if ((selectedCity === 'all' || city === selectedCity) && (selectedType === 'all' || type === selectedType)) {
+                    listing.style.display = 'block';
+                } else {
+                    listing.style.display = 'none';
+                }
+            });
+        }
+
+        // Add event listeners for city dropdown change and shop type filter buttons
+        document.getElementById('cityDropdown').addEventListener('change', filterShops);
+        const filterButtons = document.querySelectorAll('.btn.btn-primary');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                filterShops();
+            });
         });
-    }
 
-    // Add event listeners for city dropdown change and shop type filter buttons
-    document.getElementById('cityDropdown').addEventListener('change', filterShops);
-    const filterButtons = document.querySelectorAll('.btn.btn-primary');
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            filterShops();
-        });
-    });
-
-    // Select the "All Types" button by default and initialize filter
-    const allTypesButton = document.querySelector('.btn.btn-primary[data-filter="all"]');
-    allTypesButton.classList.add('active');
-    filterShops();
-</script>
+        // Select the "All Types" button by default and initialize filter
+        const allTypesButton = document.querySelector('.btn.btn-primary[data-filter="all"]');
+        allTypesButton.classList.add('active');
+        filterShops();
+    </script>
 
     <script>
         function redirectToURL(url) {
-        window.location.href = url; // Redirect to the specified URL
+            window.location.href = url; // Redirect to the specified URL
         }
     </script>
-    
+
+    <script>
+
+        // Function to filter shops based on search query
+        function filterShopsBySearch() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            const shopListings = document.querySelectorAll('.shop-card');
+
+            shopListings.forEach(listing => {
+                const shopName = listing.querySelector('.card-title').textContent.toLowerCase();
+
+                if (shopName.includes(searchQuery)) {
+                    listing.style.display = 'block';
+                } else {
+                    listing.style.display = 'none';
+                }
+            });
+        }
+
+        // Add an event listener to the search input field
+        document.getElementById('searchInput').addEventListener('input', filterShopsBySearch);
+
+    </script>
 
 
 </body>
+
 </html>
